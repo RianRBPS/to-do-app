@@ -15,11 +15,6 @@ const pool = new Pool({ // instancia de pool da livraria pg
 
 // Middleware that enables JSON parsing in incoming requests (req.body)
 app.use(express.json());
-app.use((req, res, next) => {
-    console.log('time', Date.now())
-    console.log(req)
-    next();
-})
 
 // Test route
 app.get('/', (req, res) => {
