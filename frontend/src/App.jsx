@@ -25,18 +25,14 @@ function App() {
 
   // Add a new todo
   const addTodo = async () => {
-    console.log("add button clicked!"); // debugging line
     if (!newTodo.trim()) return; // prevents empty todos
     try {
-      console.log("sending requests with:", newTodo); // debugging line
       const response = await fetch(API_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ title: newTodo }),
       });
-      console.log("response receveid", response); // debugging line
       const data = await response.json();
-      console.log("todo added:", data); // debugging line
       setTodos([data, ...todos]); // adds new todo to the list
       setNewTodo(""); // clears the input field
     } catch (error) {
