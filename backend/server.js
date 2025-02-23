@@ -1,8 +1,18 @@
 const express = require('express');
 const { Pool } = require('pg');
+const cors = require("cors");
 
 const app = express();
 const port = 4200;
+
+// allow requests from any origin (trying to connect with the frontend)
+app.use(
+  cors({
+    origin: "http://localhost:5173", // allows vite frontend
+    methods: ["GET", "POST", "PUT", "DELETE"], // Allowed HTTP methods
+    allowedHeaders: ["Content-Type", "Authorization"], // Allowed headers
+  })
+);
 
 // PostgreSQL connection configuration
 const pool = new Pool({ // instancia de pool da livraria pg
